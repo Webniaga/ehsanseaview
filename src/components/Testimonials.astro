@@ -1,0 +1,54 @@
+---
+const testimonials = [
+  {
+    name: "Sarah Chen",
+    title: "HR Manager at TechGlobal",
+    quote: "Organizing our annual corporate retreat at Ehsan Sea View Hotel exceeded all expectations. The team-building facilities by the beach created the perfect environment for our staff to connect and collaborate. The attentive service and stunning location made our event truly memorable.",
+    image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg"
+  },
+  {
+    name: "Daniel & Priya Kumar",
+    title: "Newlyweds",
+    quote: "Our dream beach wedding became reality at Ehsan Sea View Hotel. The banquet team transformed their ballroom into a magical space, and the sunset ceremony by the sea was breathtaking. Our guests still talk about the exceptional service and delicious catering.",
+    image: "https://images.pexels.com/photos/3916455/pexels-photo-3916455.jpeg"
+  },
+  {
+    name: "Ahmad Rizal",
+    title: "University Student Council President",
+    quote: "For our student leadership retreat, Ehsan Sea View Hotel provided the perfect balance of professional meeting facilities and recreational options. The affordable student package made it accessible for our university group, and the staff went above and beyond to accommodate our needs.",
+    image: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg"
+  }
+];
+---
+
+<section id="testimonials" class="section-padding">
+  <div class="container-custom">
+    <h2 class="section-title">What Our Guests Say</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map((testimonial) => (
+        <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+          <div class="flex items-center mb-4">
+            <img 
+              src={testimonial.image} 
+              alt={testimonial.name} 
+              class="w-16 h-16 rounded-full object-cover mr-4"
+              loading="lazy"
+            />
+            <div>
+              <h3 class="font-medium text-lg">{testimonial.name}</h3>
+              <p class="text-gray-600 text-sm">{testimonial.title}</p>
+            </div>
+          </div>
+          
+          <div>
+            <svg class="w-8 h-8 text-primary-300 mb-4" fill="currentColor" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10,8V0H0V8Q0,14 6,16V24H14V8ZM28,8V0H18V8Q18,14 24,16V24H32V8Z"/>
+            </svg>
+            <p class="text-gray-700 italic leading-relaxed">"{testimonial.quote}"</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

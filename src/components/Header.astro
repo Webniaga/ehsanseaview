@@ -1,0 +1,80 @@
+---
+---
+
+<header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent">
+  <div class="container-custom py-4 flex justify-between items-center">
+    <a href="/" class="flex items-center">
+      <div class="text-white font-serif font-bold text-2xl">Ehsan<span class="text-primary-400">Sea</span>View</div>
+    </a>
+    
+    <nav class="hidden md:flex space-x-8">
+      <a href="#about" class="text-white hover:text-primary-300 transition-colors">About</a>
+      <a href="#packages" class="text-white hover:text-primary-300 transition-colors">Packages</a>
+      <a href="#gallery" class="text-white hover:text-primary-300 transition-colors">Gallery</a>
+      <a href="#testimonials" class="text-white hover:text-primary-300 transition-colors">Testimonials</a>
+      <a href="#contact" class="text-white hover:text-primary-300 transition-colors">Contact</a>
+    </nav>
+    
+    <button id="mobileMenuBtn" class="md:hidden text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  
+  <div id="mobileMenu" class="fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex-col items-center justify-center hidden">
+    <button id="closeMenuBtn" class="absolute top-4 right-4 text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <nav class="flex flex-col items-center justify-center space-y-6">
+      <a href="#about" class="text-white text-xl hover:text-primary-300 transition-colors">About</a>
+      <a href="#packages" class="text-white text-xl hover:text-primary-300 transition-colors">Packages</a>
+      <a href="#gallery" class="text-white text-xl hover:text-primary-300 transition-colors">Gallery</a>
+      <a href="#testimonials" class="text-white text-xl hover:text-primary-300 transition-colors">Testimonials</a>
+      <a href="#contact" class="text-white text-xl hover:text-primary-300 transition-colors">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Header color change on scroll
+  const header = document.getElementById('header');
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.remove('bg-transparent');
+      header.classList.add('bg-primary-600', 'bg-opacity-95', 'shadow-md');
+    } else {
+      header.classList.add('bg-transparent');
+      header.classList.remove('bg-primary-600', 'bg-opacity-95', 'shadow-md');
+    }
+  });
+  
+  // Mobile menu functionality
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('hidden');
+    mobileMenu.classList.add('flex');
+    document.body.classList.add('overflow-hidden');
+  });
+  
+  closeMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('flex');
+    document.body.classList.remove('overflow-hidden');
+  });
+  
+  // Close mobile menu when clicking a navigation link
+  const mobileNavLinks = mobileMenu.querySelectorAll('a');
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+    });
+  });
+</script>

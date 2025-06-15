@@ -1,0 +1,172 @@
+---
+const galleryImages = [
+  {
+    src: "https://ehsanseaviewpd.com/wp-content/uploads/2023/10/POOL-36-950x1267.jpg",
+    alt: "Beachfront view from hotel",
+    category: "Views"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/eventballroom.jpg",
+    alt: "Elegant hotel ballroom setup",
+    category: "Events"
+  },
+  {
+    src: "https://ehsanseaviewpd.com/wp-content/uploads/2023/10/POOL-102-950x713.jpg",
+    alt: "Luxury hotel swimming pool",
+    category: "Facilities"
+  },
+  {
+    src: "https://images.pexels.com/photos/1045541/pexels-photo-1045541.jpeg",
+    alt: "Beach wedding setup",
+    category: "Weddings"
+  },
+  {
+    src: "https://ehsanseaviewpd.com/wp-content/uploads/2023/10/COFFEE-HOUSE-46-950x428.jpg",
+    alt: "Corporate meeting room",
+    category: "Meetings"
+  },
+  {
+    src: "https://ehsanseaviewpd.com/wp-content/uploads/2021/12/executive-suite-950x713.jpg",
+    alt: "Luxurious sea view room",
+    category: "Rooms"
+  },
+  {
+    src: "https://ehsanseaviewpd.com/wp-content/uploads/2021/12/swimming-pool-950x713.jpg",
+    alt: "Team building activities on beach",
+    category: "Activities"
+  },
+  {
+    src: "https://ehsanseaviewpd.com/wp-content/uploads/2021/12/coffee-2-950x638.jpg",
+    alt: "Gourmet dining experience",
+    category: "Dining"
+  }
+];
+
+const additionalLightboxImages = [
+  {
+    src: "https://img.webniaga.my/ehsanseaview/eventballroom1.jpg",
+    alt: "Ball Room Event"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/banquetnwedding.jpg",
+    alt: "Banquet & Wedding"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/gambarseminar.jpg",
+    alt: "Seminar"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/gambarseminar1.jpg",
+    alt: "Seminar"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/gambarseminar2.jpg",
+    alt: "Seminar"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/eventballroom.jpg",
+    alt: "Ball Room Event"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/eventballroom2.jpg",
+    alt: "Ball Room Event"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/eventballroom3.jpg",
+    alt: "Ball Room Event"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/banquetnwedding3.jpg",
+    alt: "Banquet & Wedding"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/banquetnwedding1.jpg",
+    alt: "Banquet & Wedding"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/banquetnwedding2.jpg",
+    alt: "Banquet & Wedding"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/banquetnwedding4.jpg",
+    alt: "Banquet & Wedding"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/gambarbilik.jpg",
+    alt: "Room"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/gambarbilik1.jpg",
+    alt: "Room"
+  },
+  {
+    src: "https://img.webniaga.my/ehsanseaview/gambarbilik2.jpg",
+    alt: "Room"
+  }
+];
+---
+
+<section id="gallery" class="section-padding bg-gray-50">
+  <div class="container-custom">
+    <h2 class="section-title">Gallery</h2>
+    <p class="section-subtitle">
+      Step into the world of Ehsan Sea View Hotel through our gallery showcasing our beautiful
+      venues, facilities, and memorable moments.
+    </p>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {galleryImages.map((image, index) => (
+        <div class={`overflow-hidden rounded-lg relative group ${
+          index === 0 || index === 7 ? 'sm:col-span-2 sm:row-span-2' : ''
+        }`}>
+          <img 
+            src={image.src} 
+            alt={image.alt} 
+            class="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <div class="text-center">
+              <span class="text-white text-sm bg-primary-600 px-3 py-1 rounded-full">{image.category}</span>
+              <p class="text-white mt-2 px-4">{image.alt}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16">
+      <h3 class="text-2xl font-semibold text-center mb-8">More Photos</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 additional-gallery-lightbox">
+        {additionalLightboxImages.slice(0, 3).map((image, index) => (
+          <a href={image.src} class="block overflow-hidden rounded-lg shadow-lg">
+            <img 
+              src={image.src} 
+              alt={image.alt}
+              class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110"
+              loading="lazy"
+            />
+          </a>
+        ))}
+        {/* Hidden links for remaining images */}
+        {additionalLightboxImages.slice(3).map((image) => (
+          <a href={image.src} class="hidden" data-alt={image.alt}></a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Initialize SimpleLightbox for the additional gallery
+  new SimpleLightbox('.additional-gallery-lightbox a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+    animationSpeed: 250,
+    fadeSpeed: 200,
+    closeText: '×',
+    showCounter: true,
+    enableKeyboard: true,
+    disableScroll: true
+  });
+</script>

@@ -1,0 +1,50 @@
+---
+const images = [
+  'https://img.webniaga.my/ehsanseaview/esvp6.jpg',
+  'https://img.webniaga.my/ehsanseaview/esvp7.jpg',
+  'https://img.webniaga.my/ehsanseaview/esvp3.jpg',
+  'https://img.webniaga.my/ehsanseaview/esvp4.jpg',
+  'https://img.webniaga.my/ehsanseaview/esvp5.jpg',
+  'https://img.webniaga.my/ehsanseaview/esvp1.jpg',
+  'https://img.webniaga.my/ehsanseaview/esvp2.jpg'
+];
+---
+
+<section id="event-package-price" class="section-padding bg-gray-50">
+  <div class="container-custom">
+    <h2 class="section-title">Event Package Prices</h2>
+    <p class="section-subtitle">
+      Explore our comprehensive pricing details for various events and occasions
+    </p>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 event-brochure-gallery">
+      {images.map((image, index) => (
+        <a href={image} class="relative group">
+          <div class="overflow-hidden rounded-lg shadow-lg">
+            <img 
+              src={image}
+              alt={`Event Package Price Brochure ${index + 1}`}
+              class="w-full transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Initialize SimpleLightbox
+  new SimpleLightbox('.event-brochure-gallery a', {
+    /* options */
+    captionsData: 'alt',
+    captionDelay: 250,
+    animationSpeed: 250,
+    fadeSpeed: 200,
+    closeText: '×',
+    showCounter: false,
+    disableScroll: true,
+    enableKeyboard: true,
+  });
+</script>
